@@ -12,7 +12,40 @@
 */
 
 class Todo {
+  todolist = [];
 
+  add(todo) {
+    if (todo !== 'Invalid Task') {
+
+      this.todolist.push(todo);
+    }
+  }
+
+  update(index, updatedTodo) {
+    if (updatedTodo !== 'Invalid Task' && index < this.todolist.length){
+      this.todolist.splice(index, 1);
+      this.todolist.splice(index, 0, updatedTodo);
+    }
+  }
+
+  remove(indexOfTodo) {
+    this.todolist.splice(indexOfTodo, 1);
+  }
+
+  getAll() {
+    return this.todolist;
+  }
+
+  get(indexOfTodo) {
+    if (indexOfTodo >= this.todolist.length) {
+      return null;
+    }
+    return this.todolist[indexOfTodo];
+  }
+
+  clear() {
+    this.todolist = [];
+  }
 }
 
 module.exports = Todo;
